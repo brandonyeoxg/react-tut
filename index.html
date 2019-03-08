@@ -18,28 +18,25 @@
                 age: 15,
             }
 
-            handleClick = (e) => {
-                // console.log(e.target)
-                this.setState({name: 'Yoshi'})
-                console.log(this.state)
+            handleChange = (e) => {
+                this.setState({
+                    name: e.target.value
+                });
             }
 
-            handleHover = (e) => {
-                console.log(e.target, e.pageX)
-            }
-
-            handleCopy = (e) => {
-                console.log("Try being original for once")
+            handleSubmit = (e) => {
+                e.preventDefault();
+                console.log(this.state.name);
             }
 
             render() {
                 return (
                     <div className="app-content">
-                        <h1>Hey, ninjas</h1>
-                        <p> My name is: { this.state.name } and I am: { this.state.age }</p>
-                        <button onClick={ this.handleClick }>Click Me</button>    
-                        <button onMouseOver={ this.handleHover }>Hover Me</button>    
-                        <p onCopy={ this.handleCopy }> What we think, we become </p>
+                        <h1>My name is { this.state.name }</h1>
+                        <form onSubmit = { this.handleSubmit }>
+                            <input type = "text" onChange = { this.handleChange }/>
+                            <button>Submit</button>
+                        </form>
                     </div>
                 );
             }
