@@ -13,11 +13,32 @@
 
     <script type="text/babel">
         class App extends React.Component {
+            state = {
+                name: "Bran",
+                age: 15,
+            }
+
+            handleClick(e) {
+                console.log(e.target)
+                // console.log(this.state) <-- this does not work
+            }
+
+            handleHover(e) {
+                console.log(e.target, e.pageX)
+            }
+
+            handleCopy(e) {
+                console.log("Try being original for once")
+            }
+
             render() {
                 return (
                     <div className="app-content">
                         <h1>Hey, ninjas</h1>
-                        <p> { Math.random() * 10 } </p>
+                        <p> My name is: { this.state.name } and I am: { this.state.age }</p>
+                        <button onClick={ this.handleClick }>Click Me</button>    
+                        <button onMouseOver={ this.handleHover }>Hover Me</button>    
+                        <p onCopy={ this.handleCopy }> What we think, we become </p>
                     </div>
                 );
             }
