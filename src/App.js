@@ -14,7 +14,7 @@ class App extends Component {
         <div className="App">
             <h1>My first React app!</h1>
             <p>Welcome :)</p>
-            <Ninjas ninjas = { this.state.ninjas }/>
+            <Ninjas ninjas = {this.state.ninjas}/>
         </div>
     );
   }
