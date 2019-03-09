@@ -14,9 +14,17 @@ class App extends Component {
     addNinja = (ninja) => {
         ninja.id = Math.random();
         let newNinjaList = [...this.state.ninjas, ninja];
-        newNinjaList.push(ninja);
         this.setState({
             ninjas: newNinjaList
+        });
+    }
+
+    deleteNinja = (id) => {
+        let ninjas = this.state.ninjas.filter(ninja => {
+            return ninja.id !== id;
+        });
+        this.setState({
+            ninjas: ninjas,
         });
     }
 
@@ -25,7 +33,7 @@ class App extends Component {
         <div className="App">
             <h1>My first React app!</h1>
             <p>Welcome :)</p>
-            <Ninjas ninjas = {this.state.ninjas}/>
+            <Ninjas deleteNinja={this.deleteNinja} ninjas={this.state.ninjas}/>
             <AddNinjas addNinja= {this.addNinja}/>
         </div>
     );
