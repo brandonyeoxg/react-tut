@@ -1,5 +1,4 @@
 import React from 'react';
-import "./Ninjas.css";
 
 const Ninjas = ({ninjas, deleteNinja}) => {
     const ninjasList = ninjas.map(ninja => {
@@ -13,7 +12,7 @@ const Ninjas = ({ninjas, deleteNinja}) => {
         ) : null;
     });
     return(
-        <div className="ninjas-list">
+        <div>
             { ninjasList }
         </div>
     );
