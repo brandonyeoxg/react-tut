@@ -1,5 +1,6 @@
 import React from 'react';
 import Rainbow from '../hoc/Rainbow';
+
 const About = () => {
   return (
     <div className="container">
