@@ -1,17 +1,17 @@
 import React, {Component} from 'react';
 import Ninjas from './Ninjas';
 import AddNinjas from "./AddNinja";
-import axios from 'axios';
 import {Link} from 'react-router-dom';
 import Pokeball from '../pokeball.png';
+import {connect} from 'react-redux';
+
 class Home extends Component {
   state = {
     ninjas: [
         {name: 'Ryu', age: 25, belt: 'black', id: 1},
         {name: 'Yoshi', age: 30, belt: 'green', id: 2},
         {name: 'Crystal', age: 20, belt: 'pink', id: 3},
-    ],
-    posts: [],
+    ]
   }
 
   addNinja = (ninja) => {
@@ -31,21 +31,12 @@ class Home extends Component {
       });
   }
 
-  componentDidMount() {
-    axios.get('https://jsonplaceholder.typicode.com/posts')
-      .then(res => {
-        this.setState({
-          posts: res.data.slice(0, 10)
-        });
-      });
-  }
-
   componentDidUpdate(prevProps, prevState) {
   }
 
   render() {
-
-    const { posts } = this.state;
+    console.log(this.props);
+    const { posts } = this.props;
 
     const postList = posts.length ? (
       posts.map(post => {
@@ -77,4 +68,10 @@ class Home extends Component {
   }
 }
 
-export default Home;
+const mapStateToProps = (state) => {
+  return {
+    posts: state.posts
+  }
+}
+
+export default connect(mapStateToProps)(Home);
